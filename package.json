@@ -8,6 +8,9 @@
   },
   "author": "Sergey Lapin",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "express": "^4.9.7",
+    "moment": "^2.8.3"
+  }
 }
-
