@@ -1,0 +1,22 @@
+{
+  "name": "node_spherical_api",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/svlapin/node_spherical_api",
+  "authors": [
+    "Sergey <sv0lapin@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.0"
+  }
+}
