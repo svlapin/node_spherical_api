@@ -17,7 +17,7 @@
       <link rel="stylesheet" href="css/bootstrap-theme.min.css">
       <link rel="stylesheet" href="css/main.css">
   </head>
-  <body ng-app="spherical-test" ng-controller="SphericalController" ng-init="app={isActive: true}">
+  <body ng-app="spherical-test" ng-controller="SphericalController">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -45,10 +45,10 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" ng-show='app.isActive'>
       <!-- Example row of columns -->
       <div>
-        <div class="row" ng-show='app.isActive'>
+        <div class="row">
           <p>Point format is: 51 30 30 N, 0 07 32 W</p>
           <p>Examples:</p>
           <ul>
@@ -57,7 +57,7 @@
             <li>Moscow: 55 45 00 N, 37 37 00 E</li>
           </ul>
         </div>
-        <div class="row" ng-show='app.isActive'>
+        <div class="row">
           <form role="form" name="calculateForm" class="col-md-4" ng-submit="calculate()" novalidate>
             <div class="form-group">
               <label>Start point</label>
@@ -85,7 +85,19 @@
           </form>
 
           <div class="col-md-4">
-            some text here
+            <p ng-show="error" class="bg-danger">An error occured during the request: {{error.error}}</p>
+            <div ng-show="response" class="bg-success">
+              <p>Distance is {{response.distance}} km</p>
+              <p>Travel will take {{formatMinutes(response.travelTime)}}</p>
+              <div ng-show="response.route.length > 0">
+                Waypoints are:
+                <ul>
+                  <li ng-repeat="route in response.route">
+                    Latiute: {{route.lat}}, <br> Longtitude: {{route.lng}}
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
