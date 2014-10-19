@@ -10,6 +10,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.9.0",
     "express": "^4.9.7",
     "moment": "^2.8.3",
     "sgeo": "0.0.3"
