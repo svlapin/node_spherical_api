@@ -19,17 +19,6 @@ describe('POST /calculate', function() {
       .expect(400, done);
   });
 
-  it('response with 400 speed in not a number', function(done) {
-    request(app)
-      .post('/calculate')
-      .send({
-        startPoint: '51 30 30 N, 0 07 32 W',
-        dstPoint: '41 8 44 N, 73 59 42 W',
-        speed: '10'
-      })
-      .expect(400, done);
-  });
-
   it('response with 400 speed is not positive', function(done) {
     request(app)
       .post('/calculate')

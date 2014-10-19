@@ -17,7 +17,7 @@
       <link rel="stylesheet" href="css/bootstrap-theme.min.css">
       <link rel="stylesheet" href="css/main.css">
   </head>
-  <body ng-app="spherical-test" ng-cotroller="SphericalController" ng-init="app={isActive: true}">
+  <body ng-app="spherical-test" ng-controller="SphericalController" ng-init="app={isActive: true}">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -58,31 +58,35 @@
           </ul>
         </div>
         <div class="row" ng-show='app.isActive'>
-          <form role="form" class="col-md-4">
+          <form role="form" name="calculateForm" class="col-md-4" ng-submit="calculate()" novalidate>
             <div class="form-group">
               <label>Start point</label>
               <input type="text" class="form-control"
                 ng-pattern="/^\-?(\d{1,2}\s){2}(\d{1,2}(\.\d+)?)\s(S|N),\s+\-?(\d{1,2}\s){2}(\d{1,2}(\.\d+)?)\s(W|E)$/"
-                ng-model="app.startPoint" required>
+                ng-model="formData.startPoint" required>
             </div>
 
 
             <div class="form-group">
               <label>Destination</label>
-              <input type="text" class="form-control" ng-model="app.endPoint"
+              <input type="text" class="form-control" ng-model="formData.dstPoint"
               ng-pattern="/^\-?(\d{1,2}\s){2}(\d{1,2}(\.\d+)?)\s(S|N),\s+\-?(\d{1,2}\s){2}(\d{1,2}(\.\d+)?)\s(W|E)$/"
               required>
             </div>
 
             <div class="form-group">
               <label>Speed (km/h)</label>
-              <input type="text" class="form-control" ng-model="app.speed"
+              <input type="text" class="form-control" ng-model="formData.speed"
               ng-pattern="/^\d{1,4}(\.\d{1,4})?$/"
               required>
             </div>
 
-            <input class="btn" type="submit">
+            <input class="btn" type="submit" ng-disabled="!calculateForm.$valid">
           </form>
+
+          <div class="col-md-4">
+            some text here
+          </div>
         </div>
       </div>
 

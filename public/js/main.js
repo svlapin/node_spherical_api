@@ -1,13 +1,18 @@
 (function() {
   'use strict';
 
-  var app = angular.module('spherical-test', []);
-
-  app.controller('SphericalController', ['$scope', '$http',
-    function($scope, $http) {
-
-
-
+  angular.module('spherical-test', [])
+    .controller('SphericalController', ['$scope', '$http',
+      function($scope, $http) {
+        $scope.calculate = function() {
+          $http.post('/calculate', $scope.formData)
+            .success(function(data, status, headers, config) {
+              console.log(data)
+            })
+            .error(function(data, status, headers, config) {
+              console.log(data)
+            });
+        };
     }
   ]);
 })();
