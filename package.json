@@ -11,7 +11,8 @@
   "private": true,
   "dependencies": {
     "express": "^4.9.7",
-    "moment": "^2.8.3"
+    "moment": "^2.8.3",
+    "sgeo": "0.0.3"
   },
   "devDependencies": {
     "mocha": "^1.21.5",
