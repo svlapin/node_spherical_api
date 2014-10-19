@@ -1,4 +1,4 @@
 node_spherical_api
 ==================
 
-REST API for calculations in spherical coordinates: distances, velocities etc
+Node + Angular example of calculating distances on Earth's surface
