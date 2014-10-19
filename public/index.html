@@ -17,7 +17,7 @@
       <link rel="stylesheet" href="css/bootstrap-theme.min.css">
       <link rel="stylesheet" href="css/main.css">
   </head>
-  <body>
+  <body ng-app="spherical-test" ng-cotroller="SphericalController" ng-init="app={isActive: true}">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -37,14 +37,53 @@
       <div class="container">
         <h1>Node.js spherical</h1>
         <p>This is a simple Node + Angular app for performing basic calculations in spherical coordinates.</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Try it now &raquo;</a></p>
+        <p>
+          <a class="btn btn-primary btn-lg" role="button" ng-show="!app.isActive" ng-click="app.isActive = true">
+          Try it now &raquo;
+          </a>
+        </p>
       </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
-      <div class="row">
-        
+      <div>
+        <div class="row" ng-show='app.isActive'>
+          <p>Point format is: 51 30 30 N, 0 07 32 W</p>
+          <p>Examples:</p>
+          <ul>
+            <li>London: 51 30 30 N, 0 07 32 W</li>
+            <li>New York: 41 8 44 N, 73 59 42 W</li>
+            <li>Moscow: 55 45 00 N, 37 37 00 E</li>
+          </ul>
+        </div>
+        <div class="row" ng-show='app.isActive'>
+          <form role="form" class="col-md-4">
+            <div class="form-group">
+              <label>Start point</label>
+              <input type="text" class="form-control"
+                ng-pattern="/^\-?(\d{1,2}\s){2}(\d{1,2}(\.\d+)?)\s(S|N),\s+\-?(\d{1,2}\s){2}(\d{1,2}(\.\d+)?)\s(W|E)$/"
+                ng-model="app.startPoint" required>
+            </div>
+
+
+            <div class="form-group">
+              <label>Destination</label>
+              <input type="text" class="form-control" ng-model="app.endPoint"
+              ng-pattern="/^\-?(\d{1,2}\s){2}(\d{1,2}(\.\d+)?)\s(S|N),\s+\-?(\d{1,2}\s){2}(\d{1,2}(\.\d+)?)\s(W|E)$/"
+              required>
+            </div>
+
+            <div class="form-group">
+              <label>Speed (km/h)</label>
+              <input type="text" class="form-control" ng-model="app.speed"
+              ng-pattern="/^\d{1,4}(\.\d{1,4})?$/"
+              required>
+            </div>
+
+            <input class="btn" type="submit">
+          </form>
+        </div>
       </div>
 
       <hr>
